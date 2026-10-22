@@ -3246,6 +3246,18 @@
     />
     <link rel="icon" type="image/png" href="images/icone-metodo-conduza.png" />
     <link rel="apple-touch-icon" href="images/icone-metodo-conduza.png" />
+    <!-- Meta Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1265535679070235');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1265535679070235&ev=PageView&noscript=1" alt="" /></noscript>
+    <!-- Fim do Meta Pixel -->
   </head>
   <body class="min-h-full flex flex-col bg-white text-slate-800">
     <main class="flex flex-col">
@@ -4270,10 +4282,10 @@
               <div class="of-card-corpo">
                 <p class="of-produto">Método Conduza completo <span>+&nbsp;3&nbsp;bônus</span></p>
                 <p class="of-de">De <s>R$ 697</s> por</p>
-                <p class="of-parcela"><small>12x de</small><span class="of-rs">R$</span><span class="of-inteiro">30</span><span class="of-centavos">,18</span></p>
+                <p class="of-parcela"><small>12x de</small><span class="of-rs">R$</span><span class="of-inteiro">20</span><span class="of-centavos">,02</span></p>
                 <p class="of-vista">ou <b>R$ 197</b> à vista</p>
                 <p class="of-economia">Você economiza <b>R$ 500</b></p>
-                <a href="https://pay.hub.la/xhAQCwvuw5clsYsKnYmn" target="_blank" rel="noopener noreferrer" class="of-botao"
+                <a href="https://pay.hub.la/WtT57yAScX2tr6UqulEU" target="_blank" rel="noopener noreferrer" class="of-botao"
                   ><span>Quero começar minha adequação</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a
                 >
                 <ul class="of-confianca">
@@ -4353,10 +4365,10 @@
                 <li><b>Esta semana</b>Você começa pela Etapa 1, com o passo a passo do lado.</li>
                 <li><b>Na fiscalização</b>Tudo pronto em mãos, na ordem certa.</li>
               </ol>
-              <a href="https://pay.hub.la/xhAQCwvuw5clsYsKnYmn" target="_blank" rel="noopener noreferrer" class="cm-botao"
+              <a href="https://pay.hub.la/WtT57yAScX2tr6UqulEU" target="_blank" rel="noopener noreferrer" class="cm-botao"
                 ><span>Escolho o caminho 2</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a
               >
-              <p class="cm-preco">12x de R$ 30,18 ou R$ 197 à vista · Garantia de 7 dias</p>
+              <p class="cm-preco">12x de R$ 20,02 ou R$ 197 à vista · Garantia de 7 dias</p>
             </div>
           </div>
         </div>
@@ -4666,6 +4678,13 @@
         }, { rootMargin: "0px 0px -20% 0px" });
         obsP.observe(p);
       })();
+    </script>
+    <script>
+      // Meta Pixel: InitiateCheckout em todo clique que leva ao checkout
+      document.addEventListener("click", function (e) {
+        var a = e.target.closest('a[href^="https://pay.hub.la/"]');
+        if (a && window.fbq) fbq("track", "InitiateCheckout", { value: 197, currency: "BRL", content_name: "Método Conduza" });
+      });
     </script>
   </body>
 </html>
