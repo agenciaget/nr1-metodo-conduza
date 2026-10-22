@@ -3254,7 +3254,28 @@
       t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
       document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '1265535679070235');
-      fbq('track', 'PageView');
+
+      // Envia o mesmo evento para a API de Conversões (servidor, /api/meta-event) com o mesmo event_id
+      window.metaEvento = function (nome, dados) {
+        var id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2);
+        if (window.fbq) fbq('track', nome, dados || {}, { eventID: id });
+        if (!/^https?:/.test(location.protocol)) return id;
+        var enviar = function () {
+          try {
+            var c = document.cookie, fbp = (c.match(/(?:^|;s*)_fbp=([^;]+)/) || [])[1], fbc = (c.match(/(?:^|;s*)_fbc=([^;]+)/) || [])[1];
+            var clid = new URLSearchParams(location.search).get('fbclid');
+            if (!fbc && clid) fbc = 'fb.1.' + Date.now() + '.' + clid;
+            var corpo = JSON.stringify({ event_name: nome, event_id: id, event_source_url: location.href, fbp: fbp, fbc: fbc, custom_data: dados });
+            if (navigator.sendBeacon && navigator.sendBeacon('/api/meta-event', new Blob([corpo], { type: 'application/json' }))) return;
+            fetch('/api/meta-event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: corpo, keepalive: true });
+          } catch (e) {}
+        };
+        // no PageView espera o pixel gravar o cookie _fbp antes de enviar pelo servidor
+        if (nome === 'PageView') window.addEventListener('load', function () { setTimeout(enviar, 1200); });
+        else enviar();
+        return id;
+      };
+      metaEvento('PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1265535679070235&ev=PageView&noscript=1" alt="" /></noscript>
     <!-- Fim do Meta Pixel -->
@@ -4683,7 +4704,7 @@
       // Meta Pixel: InitiateCheckout em todo clique que leva ao checkout
       document.addEventListener("click", function (e) {
         var a = e.target.closest('a[href^="https://pay.hub.la/"]');
-        if (a && window.fbq) fbq("track", "InitiateCheckout", { value: 197, currency: "BRL", content_name: "Método Conduza" });
+        if (a && window.metaEvento) metaEvento("InitiateCheckout", { value: 197, currency: "BRL", content_name: "Método Conduza" });
       });
     </script>
   </body>
