@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/upsell", "destination": "https://conduza-upsell.vercel.app/upsell" },
+    { "source": "/upsell/:path*", "destination": "https://conduza-upsell.vercel.app/upsell/:path*" },
+    { "source": "/downsell", "destination": "https://conduza-upsell.vercel.app/downsell" },
+    { "source": "/_next/:path*", "destination": "https://conduza-upsell.vercel.app/_next/:path*" }
+  ]
+}
