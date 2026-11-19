@@ -4707,5 +4707,123 @@
         if (a && window.metaEvento) metaEvento("InitiateCheckout", { value: 197, currency: "BRL", content_name: "Método Conduza" });
       });
     </script>
+      <!-- Conduza: repasse de UTMs para o checkout (cópia de dashboard-conduza/public/utm.js) -->
+    <script>
+/*!
+ * Conduza · repasse de UTMs para o checkout (Hubla)
+ * Fonte única: dashboard-conduza/public/utm.js — cópias embutidas nas páginas.
+ *
+ * 1. Chegou com UTM/clid na URL → guarda num cookie do DOMÍNIO RAIZ
+ *    (.conduzaocupacional.com.br, 30 dias). Todos os subdomínios leem o mesmo
+ *    cookie: nr1., software., /upsell, /downsell. Visita nova com UTM
+ *    substitui a anterior (último clique); visita sem UTM nunca apaga.
+ * 2. Todo link para a Hubla (pay.hub.la) ganha esses parâmetros — só os que o
+ *    link ainda não tem. Decora no carregamento, quando o React troca o DOM e
+ *    no instante do clique (garantia contra re-render).
+ * Sem dado pessoal, sem envio para lugar nenhum: só lê a URL e reescreve links.
+ */
+(function () {
+  "use strict";
+  if (window.__czUtm) return;
+  var KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_id", "src", "sck", "fbclid", "gclid", "wbraid", "gbraid"];
+  var NAME = "cz_utm";
+  var DAYS = 30;
+
+  function fromUrl() {
+    var out = {}, any = false, q;
+    try { q = new URLSearchParams(location.search); } catch (e) { return null; }
+    for (var i = 0; i < KEYS.length; i++) {
+      var v = q.get(KEYS[i]);
+      if (v && v.length <= 500) { out[KEYS[i]] = v; any = true; }
+    }
+    return any ? out : null;
+  }
+
+  function readCookie() {
+    var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + NAME + "=([^;]*)"));
+    if (!m) return null;
+    try { return JSON.parse(decodeURIComponent(m[1])); } catch (e) { return null; }
+  }
+
+  // Grava no domínio mais curto que o navegador aceitar (o raiz: x.com.br).
+  function writeCookie(data) {
+    var value = encodeURIComponent(JSON.stringify(data));
+    var exp = new Date(Date.now() + DAYS * 864e5).toUTCString();
+    var parts = location.hostname.split(".");
+    for (var i = Math.max(parts.length - 3, 0); i < parts.length - 1; i++) {
+      var domain = parts.slice(i).join(".");
+      document.cookie = NAME + "=" + value + ";expires=" + exp + ";path=/;domain=." + domain + ";SameSite=Lax";
+      if (readCookie()) return;
+    }
+    document.cookie = NAME + "=" + value + ";expires=" + exp + ";path=/;SameSite=Lax";
+  }
+
+  function stored() {
+    var c = readCookie();
+    if (c) return c;
+    try { return JSON.parse(localStorage.getItem(NAME) || "null"); } catch (e) { return null; }
+  }
+
+  var fresh = fromUrl();
+  if (fresh) {
+    writeCookie(fresh);
+    try { localStorage.setItem(NAME, JSON.stringify(fresh)); } catch (e) {}
+  }
+  var params = fresh || stored();
+
+  function isCheckout(url) {
+    return /(^|\.)hub\.la$/i.test(url.hostname);
+  }
+
+  function decorate(a) {
+    if (!params || !a || !a.getAttribute) return;
+    var href = a.getAttribute("href");
+    if (!href || href.charAt(0) === "#") return;
+    var url;
+    try { url = new URL(href, location.href); } catch (e) { return; }
+    if (!isCheckout(url)) return;
+    var changed = false;
+    for (var k in params) {
+      if (Object.prototype.hasOwnProperty.call(params, k) && params[k] && !url.searchParams.has(k)) {
+        url.searchParams.set(k, params[k]);
+        changed = true;
+      }
+    }
+    if (changed) a.setAttribute("href", url.toString());
+  }
+
+  function decorateAll(root) {
+    var links = (root || document).querySelectorAll ? (root || document).querySelectorAll("a[href]") : [];
+    for (var i = 0; i < links.length; i++) decorate(links[i]);
+  }
+
+  function onPointer(e) {
+    var t = e.target;
+    var a = t && t.closest ? t.closest("a[href]") : null;
+    if (a) decorate(a);
+  }
+  document.addEventListener("pointerdown", onPointer, true);
+  document.addEventListener("click", onPointer, true);
+  document.addEventListener("keydown", function (e) { if (e.key === "Enter") onPointer(e); }, true);
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { decorateAll(); });
+  else decorateAll();
+
+  if (window.MutationObserver) {
+    new MutationObserver(function (list) {
+      for (var i = 0; i < list.length; i++) {
+        var m = list[i];
+        if (m.type === "attributes") decorate(m.target);
+        else for (var j = 0; j < m.addedNodes.length; j++) {
+          var n = m.addedNodes[j];
+          if (n.nodeType === 1) { if (n.tagName === "A") decorate(n); else decorateAll(n); }
+        }
+      }
+    }).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ["href"] });
+  }
+
+  window.__czUtm = { params: params, decorate: decorateAll };
+})();
+    </script>
   </body>
 </html>
