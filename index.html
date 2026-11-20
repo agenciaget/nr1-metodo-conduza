@@ -3238,6 +3238,44 @@
         .fq-wrap { grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: start; }
         .fq-lado { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 2rem); }
       }
+      /* Hero com VSL vertical (VTurb): celular = título, vídeo, subtítulo; desktop = texto à esquerda, vídeo à direita */
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+      .hero-vsl-area { margin-top: 2rem; display: flex; justify-content: center; }
+      .hero-vsl {
+        position: relative; width: 100%; max-width: 20rem; border-radius: 1.5rem; overflow: hidden; background: #071512;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 30px 60px -25px rgba(0, 0, 0, 0.75), 0 0 80px -25px rgba(110, 231, 183, 0.35);
+      }
+      /* o player da VTurb ocupa a largura toda do quadro */
+      .hero-vsl > vturb-smartplayer, .hero-vsl > div:not(.hero-vsl-aviso), .hero-vsl iframe, .hero-vsl video {
+        display: block !important; width: 100% !important; max-width: none !important; margin: 0 !important;
+      }
+      /* aviso provisório até o código da VTurb entrar */
+      .hero-vsl-aviso {
+        aspect-ratio: 9 / 16; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+        background: radial-gradient(ellipse at 50% 35%, rgba(20, 119, 106, 0.55), transparent 70%), #0b1f1b;
+      }
+      .hero-vsl:has(vturb-smartplayer, iframe, video) .hero-vsl-aviso { display: none; }
+      .hero-vsl-play {
+        display: flex; align-items: center; justify-content: center; width: 4.5rem; height: 4.5rem; border-radius: 999px;
+        background: rgba(255, 255, 255, 0.95); color: var(--conduza-green); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      }
+      .hero-vsl-play svg { width: 28px; height: 28px; margin-left: 4px; }
+      .hero-vsl-aviso-txt { font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236, 253, 245, 0.7); }
+      .hero-grid .hero-subtitulo { margin-top: 2rem; }
+      @media (min-width: 64rem) {
+        .hero-solo { max-width: 72rem; }
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr) 22rem; column-gap: 4rem; align-items: center;
+          grid-template-areas: "texto vsl" "sub vsl";
+        }
+        .hero-texto { grid-area: texto; align-self: end; text-align: left; }
+        .hero-vsl-area { grid-area: vsl; margin-top: 0; }
+        .hero-vsl { max-width: none; }
+        .hero-grid .hero-subtitulo { grid-area: sub; align-self: start; margin: 1.75rem 0 0; text-align: left; }
+        .hero-texto .hero-logo { margin-left: 0; }
+        .hero-texto .hero-titulo-principal, .hero-texto .hero-titulo-apoio { margin-left: 0; }
+        .hero-texto .hero-titulo-principal { max-width: 15ch; }
+      }
     </style>
     <title>Método Conduza de Adequação à NR-01 | Conduza Ocupacional</title>
     <meta
@@ -3294,7 +3332,8 @@
         <div
           class="hero-solo relative mx-auto px-6 text-center"
         >
-          <div>
+          <div class="hero-grid">
+          <div class="hero-texto">
             <div>
               <img
                 src="images/logo-metodo-conduza-fundo-escuro.png"
@@ -3316,6 +3355,24 @@
                 >com o método de um médico do trabalho com <strong>mais de 25 anos de experiência</strong></span
               >
             </h1>
+          </div>
+
+          <div class="hero-vsl-area">
+            <div class="hero-vsl" id="vsl">
+              <!--
+                ==========================================================
+                VSL (VTURB): cole o código do player aqui dentro, no lugar
+                deste comentário. O aviso abaixo some sozinho quando o
+                player estiver aqui.
+                ==========================================================
+              -->
+              <div class="hero-vsl-aviso" aria-hidden="true">
+                <span class="hero-vsl-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>
+                <span class="hero-vsl-aviso-txt">Vídeo de apresentação</span>
+              </div>
+            </div>
+          </div>
+
             <p class="hero-subtitulo">
               Um <strong>passo a passo prático</strong> para gerir os riscos psicossociais e aplicar a norma com
               segurança, mesmo que hoje a <span class="nr">NR-01</span> ainda pareça confusa para você.
@@ -4303,10 +4360,10 @@
               <div class="of-card-corpo">
                 <p class="of-produto">Método Conduza completo <span>+&nbsp;3&nbsp;bônus</span></p>
                 <p class="of-de">De <s>R$ 697</s> por</p>
-                <p class="of-parcela"><small>12x de</small><span class="of-rs">R$</span><span class="of-inteiro">20</span><span class="of-centavos">,02</span></p>
-                <p class="of-vista">ou <b>R$ 197</b> à vista</p>
-                <p class="of-economia">Você economiza <b>R$ 500</b></p>
-                <a href="https://pay.hub.la/WtT57yAScX2tr6UqulEU" target="_blank" rel="noopener noreferrer" class="of-botao"
+                <p class="of-parcela"><small>12x de</small><span class="of-rs">R$</span><span class="of-inteiro">30</span><span class="of-centavos">,18</span></p>
+                <p class="of-vista">ou <b>R$ 297</b> à vista</p>
+                <p class="of-economia">Você economiza <b>R$ 400</b></p>
+                <a href="https://pay.hub.la/xhAQCwvuw5clsYsKnYmn" target="_blank" rel="noopener noreferrer" class="of-botao"
                   ><span>Quero começar minha adequação</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a
                 >
                 <ul class="of-confianca">
@@ -4325,10 +4382,10 @@
               <i><span style="--w: 100%"></span></i>
             </div>
             <div class="of-barra of-barra-metodo">
-              <p><span>O Método Conduza completo, com os 3 bônus</span><b>R$ 197</b></p>
-              <i><span style="--w: 1.1%"></span></i>
+              <p><span>O Método Conduza completo, com os 3 bônus</span><b>R$ 297</b></p>
+              <i><span style="--w: 1.6%"></span></i>
             </div>
-            <p class="of-persp-fecho">O método inteiro custa <strong>cerca de 1% de uma única multa.</strong></p>
+            <p class="of-persp-fecho">O método inteiro custa <strong>menos de 2% de uma única multa.</strong></p>
           </div>
         </div>
       </section>
@@ -4386,10 +4443,10 @@
                 <li><b>Esta semana</b>Você começa pela Etapa 1, com o passo a passo do lado.</li>
                 <li><b>Na fiscalização</b>Tudo pronto em mãos, na ordem certa.</li>
               </ol>
-              <a href="https://pay.hub.la/WtT57yAScX2tr6UqulEU" target="_blank" rel="noopener noreferrer" class="cm-botao"
+              <a href="https://pay.hub.la/xhAQCwvuw5clsYsKnYmn" target="_blank" rel="noopener noreferrer" class="cm-botao"
                 ><span>Escolho o caminho 2</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a
               >
-              <p class="cm-preco">12x de R$ 20,02 ou R$ 197 à vista · Garantia de 7 dias</p>
+              <p class="cm-preco">12x de R$ 30,18 ou R$ 297 à vista · Garantia de 7 dias</p>
             </div>
           </div>
         </div>
@@ -4704,7 +4761,7 @@
       // Meta Pixel: InitiateCheckout em todo clique que leva ao checkout
       document.addEventListener("click", function (e) {
         var a = e.target.closest('a[href^="https://pay.hub.la/"]');
-        if (a && window.metaEvento) metaEvento("InitiateCheckout", { value: 197, currency: "BRL", content_name: "Método Conduza" });
+        if (a && window.metaEvento) metaEvento("InitiateCheckout", { value: 297, currency: "BRL", content_name: "Método Conduza" });
       });
     </script>
       <!-- Conduza: repasse de UTMs para o checkout (cópia de dashboard-conduza/public/utm.js) -->
