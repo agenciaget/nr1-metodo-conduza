@@ -2422,10 +2422,10 @@
       @media (min-width: 64rem) {
         .jogo-wrap {
           grid-template-columns: 1fr 1.05fr; column-gap: 4rem; row-gap: 2.5rem;
-          grid-template-areas: "texto conta" "oculto conta" "fecho fecho";
+          grid-template-areas: "texto conta" "fecho fecho";
           align-items: start;
         }
-        .jogo-texto { grid-area: texto; padding-top: 1rem; }
+        .jogo-texto { grid-area: texto; align-self: center; }
         .conta-area { grid-area: conta; }
         .jogo-oculto { grid-area: oculto; }
         .jogo-fecho { grid-area: fecho; margin-top: 1rem; font-size: 1.375rem; }
@@ -2780,7 +2780,7 @@
       .dp-titulo { margin: 0 auto; max-width: 22ch; text-align: center; font-size: 2rem; line-height: 1.15; font-weight: 800; color: var(--conduza-ink); text-wrap: balance; }
 
       .dp-numeros { margin: 2rem auto 0; max-width: 40rem; display: grid; gap: 0.75rem; }
-      .dp-numeros > div { display: flex; align-items: center; gap: 0.875rem; padding: 0.875rem 1.125rem; border-radius: 1rem; background: #f6f8fa; border: 1px solid #e8edf2; }
+      .dp-numeros > div { display: flex; align-items: center; gap: 0.875rem; padding: 0.875rem 1.125rem; border-radius: 1rem; background: #fff; border: 1px solid #e8edf2; }
       .dp-num-icone { flex: none; display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 0.875rem; background: rgba(20, 119, 106, 0.12); color: var(--conduza-green); }
       .dp-num-icone .ic { width: 22px; height: 22px; }
       .dp-numeros p { font-size: 1rem; line-height: 1.3; color: #475569; }
@@ -3273,6 +3273,16 @@
         .hero-texto .hero-titulo-principal, .hero-texto .hero-titulo-apoio { margin-left: 0; }
         .hero-texto .hero-titulo-principal { max-width: 15ch; }
       }
+      /* Hero: subtítulo + botão juntos; painel "quem ganha" como seção própria; cor do card da consultora */
+      .hero-baixo { margin-top: 2rem; }
+      .hero-baixo .hero-subtitulo { margin-top: 0; }
+      .hero-cta { margin-top: 1.75rem; }
+      .ganho-sec .ganho-painel { margin-top: 0; }
+      .dp-consultor { --cor: #15302c; }
+      @media (min-width: 64rem) {
+        .hero-baixo { grid-area: sub; align-self: start; margin-top: 1.75rem; text-align: left; }
+        .hero-baixo .hero-subtitulo { margin: 0; }
+      }
     </style>
     <title>Método Conduza de Adequação à NR-01 | Conduza Ocupacional</title>
     <meta
@@ -3342,15 +3352,11 @@
             </div>
             <span
               class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-200 ring-1 ring-white/20"
-              >Para quem vai implementar a <span class="nr">NR-01</span> na prática</span
+              >Para donos de empresa, RH e profissionais de SST</span
             >
             <h1 class="hero-titulo">
-              <span class="hero-titulo-principal"
-                >Aprenda, do zero, como implementar a <span class="text-emerald-300"><span class="nr">NR-01</span></span> nas empresas</span
-              >
-              <span class="hero-titulo-apoio"
-                >com o método de um médico do trabalho com <strong>mais de 25 anos de experiência</strong></span
-              >
+              <span class="hero-titulo-principal">Se o fiscal chegasse amanhã, <span class="text-emerald-300">sua empresa passaria?</span></span>
+              <span class="hero-titulo-apoio">A nova <span class="nr">NR-01</span> exige a gestão dos riscos psicossociais. <strong>A maioria das empresas ainda não começou.</strong></span>
             </h1>
           </div>
 
@@ -3362,81 +3368,15 @@
             </div>
           </div>
 
+            <div class="hero-baixo">
             <p class="hero-subtitulo">
-              Um <strong>passo a passo prático</strong> para gerir os riscos psicossociais e aplicar a norma com
-              segurança, mesmo que hoje a <span class="nr">NR-01</span> ainda pareça confusa para você.
+              O <strong>Método Conduza</strong>, criado por um médico do trabalho com mais de 25 anos de experiência, mostra o
+              passo a passo pra adequar sua empresa, mesmo que você comece do zero.
             </p>
+            <a href="#oferta" class="ganho-botao hero-cta"
+              ><span class="ganho-botao-texto">Quero proteger minha empresa<span class="ganho-seta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span></a
+            >
           </div>
-        </div>
-      </section>
-      <section class="bg-white py-16 sm:py-24">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="text-center">
-            <span
-              class="inline-block rounded-full bg-conduza-green/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-conduza-green"
-              >Pra quem é</span
-            >
-            <h2 class="mx-auto mt-4 max-w-2xl text-3xl font-extrabold text-conduza-ink sm:text-4xl">
-              Feito para quem vai colocar a <span class="nr">NR-01</span> em prática
-            </h2>
-          </div>
-          <div class="publico-grid">
-            <div
-              class="publico-card"
-            >
-              <span class="publico-icone"
-                ><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span
-              >
-              <p class="publico-nome">Profissionais de RH</p>
-            </div>
-            <div
-              class="publico-card"
-            >
-              <span class="publico-icone"
-                ><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/></svg></span
-              >
-              <p class="publico-nome">Técnicos e Engenheiros de Segurança do Trabalho</p>
-            </div>
-            <div
-              class="publico-card"
-            >
-              <span class="publico-icone"
-                ><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span
-              >
-              <p class="publico-nome">Consultores em SST e Saúde Corporativa</p>
-            </div>
-            <div
-              class="publico-card"
-            >
-              <span class="publico-icone"
-                ><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span
-              >
-              <p class="publico-nome">Peritos Judiciais e Assistentes Técnicos</p>
-            </div>
-            <div
-              class="publico-card"
-            >
-              <span class="publico-icone"
-                ><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg></span
-              >
-              <p class="publico-nome">Médicos e Enfermeiros do Trabalho</p>
-            </div>
-            <div
-              class="publico-card"
-            >
-              <span class="publico-icone"
-                ><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg></span
-              >
-              <p class="publico-nome">Psicólogos Organizacionais</p>
-            </div>
-            <div
-              class="publico-card"
-            >
-              <span class="publico-icone"
-                ><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span
-              >
-              <p class="publico-nome">Cipeiros e membros do SESMT</p>
-            </div>
           </div>
         </div>
       </section>
@@ -3451,8 +3391,7 @@
               A nova <span class="nr">NR-01</span> já está valendo. E a conta vai pra quem não se adequar.
             </h2>
             <p class="mx-auto mt-4 max-w-2xl text-base text-slate-600">
-              A regra entrou em vigor em maio de 2026 e ampliou a responsabilidade da empresa sobre a saúde mental de
-              quem trabalha nela. Veja o que a imprensa está publicando:
+              Em vigor desde maio de 2026. Veja o que a imprensa está publicando:
             </p>
           </div>
           <div class="mt-12 grid gap-6 sm:grid-cols-2">
@@ -3485,10 +3424,6 @@
                   <span class="nr">NR-1</span>: Regra que amplia fiscalização sobre saúde mental no trabalho entra em vigor nesta terça; veja o
                   que muda
                 </p>
-                <p class="mt-2 text-sm text-slate-600">
-                  Atualização da <span class="nr">NR-1</span> amplia a responsabilidade das empresas sobre riscos à saúde mental. Em 2025, o
-                  país registrou mais de 546 mil afastamentos por transtornos mentais.
-                </p>
               </div>
             </div>
             <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -3518,10 +3453,6 @@
                 </div>
                 <p class="mt-3 text-base font-bold leading-snug text-conduza-ink">
                   Empresas estão atentas para aumento de processos trabalhistas com nova <span class="nr">NR-1</span> sobre saúde mental
-                </p>
-                <p class="mt-2 text-sm text-slate-600">
-                  Norma que entrou em vigor obriga empregadores a mapear riscos emocionais e reforça responsabilidade
-                  das empresas sobre casos de adoecimento psicológico.
                 </p>
               </div>
             </div>
@@ -3554,10 +3485,6 @@
                 <p class="mt-3 text-base font-bold leading-snug text-conduza-ink">
                   Nova <span class="nr">NR-1</span> amplia prevenção de riscos para a saúde mental nos ambientes de trabalho
                 </p>
-                <p class="mt-2 text-sm text-slate-600">
-                  Atualização da norma reforça gerenciamento de riscos psicossociais e consolida a urgência de uma
-                  cultura preventiva no país.
-                </p>
               </div>
             </div>
             <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -3588,124 +3515,10 @@
                 <p class="mt-3 text-base font-bold leading-snug text-conduza-ink">
                   Crise de Saúde Mental no Brasil: Empresas Terão Que Adotar Medidas de Prevenção
                 </p>
-                <p class="mt-2 text-sm text-slate-600">
-                  País teve o maior número de afastamentos por transtornos mentais em 10 anos; atualização da <span class="nr">NR-1</span>
-                  exigirá que companhias acompanhem e protejam o bem-estar psicológico dos funcionários.
-                </p>
               </div>
             </div>
           </div>
-          <div class="ganho-painel">
-            <h3 class="ganho-chamada">Quem sabe aplicar a <span class="nr">NR-01</span> ganha dinheiro com isso</h3>
-            <p class="ganho-sub">Seja qual for o seu lado da mesa:</p>
-            <div class="ganho-grid">
-              <div class="ganho-card">
-                <span class="ganho-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
-                <p class="ganho-perfil">Dono(a) de empresa</p>
-                <p class="ganho-titulo">Dinheiro que fica no caixa</p>
-                <ul class="ganho-lista">
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Evita multa da fiscalização</span></li>
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Evita processo trabalhista</span></li>
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Uma única condenação por burnout custou a um banco <strong>R$ 50 mil + pensão vitalícia</strong></span></li>
-                </ul>
-              </div>
-              <div class="ganho-card">
-                <span class="ganho-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span>
-                <p class="ganho-perfil">Consultor(a) de SST</p>
-                <p class="ganho-titulo">Um serviço novo pra vender</p>
-                <ul class="ganho-lista">
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>A maioria das empresas ainda não sabe por onde começar</span></li>
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Você chega com o <strong>método pronto</strong> e vende a adequação como serviço</span></li>
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Repete o mesmo processo em quantos clientes quiser</span></li>
-                </ul>
-              </div>
-              <div class="ganho-card">
-                <span class="ganho-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span>
-                <p class="ganho-perfil">RH e administrativo</p>
-                <p class="ganho-titulo">Seu trabalho passa a ser visto</p>
-                <ul class="ganho-lista">
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Você vira a pessoa que resolve a <span class="nr">NR-01</span> na empresa</span></li>
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Protege a empresa de multa e de processo</span></li>
-                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>E <strong>a diretoria lembra</strong> de quem fez isso</span></li>
-                </ul>
-              </div>
-            </div>
-            <p class="ganho-fecho">
-              A norma já está valendo. <strong>Cada mês sem adequação é mais um mês com a empresa exposta.</strong>
-            </p>
-            <a href="#oferta" class="ganho-botao"
-              ><span class="ganho-botao-texto">Quero aprender a aplicar a <span class="nr">NR-01<span class="ganho-seta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span></span></a
-            >
-          </div>
-        </div>
-      </section>
-      <section class="cen bg-white py-16 sm:py-24">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="text-center">
-            <span
-              class="inline-block rounded-full bg-conduza-green/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-conduza-green"
-              >Soa familiar?</span
-            >
-            <h2 class="cen-titulo">
-              Você sabe que precisa aplicar a <span class="nr">NR-01</span>. <span class="cen-titulo-destaque">Só não sabe por onde começar.</span>
-            </h2>
-          </div>
-
-          <div class="cen-chat" role="img" aria-label="Pensamentos comuns de quem precisa aplicar a NR-01">
-            <div class="cen-chat-topo">
-              <span class="cen-avatar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
-              <span>
-                <span class="cen-chat-nome">Você</span>
-                <span class="cen-chat-status">pensando na <span class="nr">NR-01</span>...</span>
-              </span>
-            </div>
-            <div class="cen-chat-corpo">
-              <p class="cen-balao">Por onde eu começo?</p>
-              <p class="cen-balao">E se eu aplicar errado e expor a empresa?</p>
-              <p class="cen-balao">Cada vídeo que eu assisto fala uma coisa diferente.</p>
-              <p class="cen-balao">Na prática, o que a <span class="nr">NR-01</span> exige de mim?</p>
-              <p class="cen-balao">Eu queria um passo a passo pra seguir, do começo ao fim.</p>
-              <p class="cen-balao cen-digitando" aria-hidden="true"><span></span><span></span><span></span></p>
-            </div>
-          </div>
-
-          <p class="cen-empatia">
-            Se alguma dessas frases já passou pela sua cabeça, é normal. Desde que a <span class="nr">NR-01</span> passou a exigir a gestão de
-            riscos psicossociais, a informação chega de todo lado, e <strong>cada fonte diz uma coisa</strong>.
-          </p>
-
-          <div class="cen-compara">
-            <div class="cen-lado cen-labirinto">
-              <p class="cen-lado-rotulo">Hoje</p>
-              <p class="cen-lado-titulo">Um labirinto de informação</p>
-              <div class="cen-etiquetas">
-                <span class="cen-etiqueta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Vídeo contraditório</span>
-                <span class="cen-etiqueta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Post alarmista</span>
-                <span class="cen-etiqueta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Curso genérico</span>
-                <span class="cen-etiqueta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Teoria solta</span>
-                <span class="cen-etiqueta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Informação desencontrada</span>
-                <span class="cen-etiqueta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Medo de errar</span>
-              </div>
-            </div>
-            <div class="cen-seta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-            <div class="cen-lado cen-caminho">
-              <p class="cen-lado-rotulo">Com o Método Conduza</p>
-              <p class="cen-lado-titulo">Um caminho, em ordem</p>
-              <ol class="cen-etapas">
-                <li><span class="cen-num">1</span><span>Entender a <span class="nr">NR-01</span> na prática</span></li>
-                <li><span class="cen-num">2</span><span>Diagnóstico de riscos</span></li>
-                <li><span class="cen-num">3</span><span>Plano de ação</span></li>
-                <li><span class="cen-num">4</span><span>Documentação e evidências</span></li>
-                <li><span class="cen-num">5</span><span>Gestão contínua</span></li>
-                <li class="cen-fim"><span class="cen-num"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Empresa em conformidade</span></li>
-              </ol>
-            </div>
-          </div>
-
-          <p class="cen-fecho">
-            Você precisa de <strong>uma sequência clara</strong>, do diagnóstico até a fiscalização. É exatamente isso que
-            o Método Conduza entrega.
-          </p>
+        
         </div>
       </section>
       <section class="jogo">
@@ -3753,31 +3566,13 @@
             </div>
           </div>
 
-          <div class="jogo-oculto">
-            <p class="oculto-titulo">E o que não aparece na nota:</p>
-            <ul class="oculto-lista">
-              <li class="oculto-item">
-                <span class="oculto-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></span>
-                <span><strong>Retrabalho.</strong> Implementação malfeita precisa ser refeita, e você paga duas vezes.</span>
-              </li>
-              <li class="oculto-item">
-                <span class="oculto-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 17 13.5 8.5l-5 5L2 7"/><path d="M16 17h6v-6"/></svg></span>
-                <span><strong>546 mil afastamentos</strong> por transtorno mental no Brasil em 2025 (+15,66% em relação a 2024).</span>
-              </li>
-              <li class="oculto-item">
-                <span class="oculto-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></span>
-                <span><strong>Equipe desgastada.</strong> Sem gestão de riscos psicossociais, o clima, a saúde e a produtividade caem.</span>
-              </li>
-            </ul>
-          </div>
-
           <p class="jogo-fecho">
             Sua empresa vai precisar se adequar de qualquer jeito. <strong>Dá pra fazer agora, do jeito certo, ou pagar essa
             conta depois.</strong>
           </p>
         </div>
       </section>
-      <section class="quiz-sec bg-slate-50 py-16 sm:py-24">
+      <section class="quiz-sec bg-white py-16 sm:py-24">
         <div class="mx-auto max-w-3xl px-6">
           <div class="text-center">
             <span
@@ -3785,9 +3580,9 @@
               >Faça o teste</span
             >
             <h2 class="mx-auto mt-4 max-w-2xl text-3xl font-extrabold text-conduza-ink sm:text-4xl">
-              Se o Ministério do Trabalho batesse na sua porta amanhã, você estaria pronto?
+              Onde sua empresa está exposta?
             </h2>
-            <p class="quiz-intro">Responda 4 perguntas e veja, na hora, onde sua empresa está exposta.</p>
+            <p class="quiz-intro">Responda 4 perguntas e veja o resultado na hora.</p>
           </div>
 
           <div class="quiz" data-quiz>
@@ -3859,6 +3654,42 @@
           </div>
         </div>
       </section>
+      <section class="cen bg-slate-50 py-16 sm:py-24">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="text-center">
+            <span
+              class="inline-block rounded-full bg-conduza-green/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-conduza-green"
+              >Soa familiar?</span
+            >
+            <h2 class="cen-titulo">
+              Você sabe que precisa aplicar a <span class="nr">NR-01</span>. <span class="cen-titulo-destaque">Só não sabe por onde começar.</span>
+            </h2>
+          </div>
+
+          <div class="cen-chat" role="img" aria-label="Pensamentos comuns de quem precisa aplicar a NR-01">
+            <div class="cen-chat-topo">
+              <span class="cen-avatar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
+              <span>
+                <span class="cen-chat-nome">Você</span>
+                <span class="cen-chat-status">pensando na <span class="nr">NR-01</span>...</span>
+              </span>
+            </div>
+            <div class="cen-chat-corpo">
+              <p class="cen-balao">Por onde eu começo?</p>
+              <p class="cen-balao">E se eu aplicar errado e expor a empresa?</p>
+              <p class="cen-balao">Cada vídeo que eu assisto fala uma coisa diferente.</p>
+              <p class="cen-balao">Na prática, o que a <span class="nr">NR-01</span> exige de mim?</p>
+              <p class="cen-balao">Eu queria um passo a passo pra seguir, do começo ao fim.</p>
+              <p class="cen-balao cen-digitando" aria-hidden="true"><span></span><span></span><span></span></p>
+            </div>
+          </div>
+
+          <p class="cen-empatia">
+            Se alguma dessas frases já passou pela sua cabeça, é normal. Desde que a <span class="nr">NR-01</span> passou a exigir a gestão de
+            riscos psicossociais, a informação chega de todo lado, e <strong>cada fonte diz uma coisa</strong>.
+          </p>
+        </div>
+      </section>
       <section class="vir bg-white py-16 sm:py-24">
         <div class="mx-auto max-w-5xl px-6">
           <div class="vir-topo">
@@ -3915,36 +3746,6 @@
                 <li><span class="vir-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Pensado pra rotina real de uma empresa</li>
               </ul>
           </div>
-
-          <p class="vir-como">Como funciona</p>
-          <ol class="vir-passos">
-            <li class="vir-passo">
-              <span class="vir-passo-num"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span class="vir-passo-n">1</span></span>
-              <div>
-                <p class="vir-passo-titulo">Diagnóstico</p>
-                <p class="vir-passo-texto">Você descobre onde sua empresa está e o que falta.</p>
-              </div>
-            </li>
-            <li class="vir-passo">
-              <span class="vir-passo-num"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg><span class="vir-passo-n">2</span></span>
-              <div>
-                <p class="vir-passo-titulo">Implementação guiada</p>
-                <p class="vir-passo-texto">Você aplica com modelos e checklists prontos.</p>
-              </div>
-            </li>
-            <li class="vir-passo">
-              <span class="vir-passo-num"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span class="vir-passo-n">3</span></span>
-              <div>
-                <p class="vir-passo-titulo">Conformidade sustentável</p>
-                <p class="vir-passo-texto">Os processos se mantêm e ficam prontos pra fiscalização.</p>
-              </div>
-            </li>
-          </ol>
-
-          <p class="vir-origem">
-            <span class="vir-origem-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
-            <span>Criado na prática, por quem viveu a saúde ocupacional <strong>dentro de empresas, incluindo multinacionais</strong>.</span>
-          </p>
         </div>
       </section>
       <section class="tr-sec bg-slate-50 py-16 sm:py-24">
@@ -3957,7 +3758,7 @@
             <h2 class="mx-auto mt-4 max-w-2xl text-3xl font-extrabold text-conduza-ink sm:text-4xl">
               A gente te mostra o caminho, do zero à conformidade
             </h2>
-            <p class="tr-intro">Cada etapa termina com uma entrega concreta. Você avança sabendo onde está e o que vem a seguir.</p>
+            <p class="tr-intro">Cada etapa termina com uma entrega concreta.</p>
           </div>
 
           <div class="trilha" data-trilha>
@@ -3968,7 +3769,6 @@
               <div class="tr-card">
                 <p class="tr-rotulo">Etapa 1</p>
                 <p class="tr-titulo">Entendendo a <span class="nr">NR-01</span> na prática</p>
-                <p class="tr-desc">O que a norma realmente exige, em linguagem direta.</p>
                 <p class="tr-entrega"><span class="tr-entrega-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Você sai com:</b> Clareza do que precisa ser feito</span></p>
               </div>
             </li>
@@ -3977,7 +3777,6 @@
               <div class="tr-card">
                 <p class="tr-rotulo">Etapa 2</p>
                 <p class="tr-titulo">Diagnóstico de riscos</p>
-                <p class="tr-desc">Como mapear os riscos ocupacionais e psicossociais reais da empresa.</p>
                 <p class="tr-entrega"><span class="tr-entrega-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Você sai com:</b> Os riscos da empresa mapeados</span></p>
               </div>
             </li>
@@ -3986,7 +3785,6 @@
               <div class="tr-card">
                 <p class="tr-rotulo">Etapa 3</p>
                 <p class="tr-titulo">Plano de ação</p>
-                <p class="tr-desc">As etapas de adequação na ordem certa, com prazos realistas.</p>
                 <p class="tr-entrega"><span class="tr-entrega-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Você sai com:</b> Um plano de ação com prazos</span></p>
               </div>
             </li>
@@ -3995,7 +3793,6 @@
               <div class="tr-card">
                 <p class="tr-rotulo">Etapa 4</p>
                 <p class="tr-titulo">Documentação e evidências</p>
-                <p class="tr-desc">Quais documentos produzir e como mantê-los prontos pra auditoria.</p>
                 <p class="tr-entrega"><span class="tr-entrega-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Você sai com:</b> Documentos prontos pra auditoria</span></p>
               </div>
             </li>
@@ -4004,7 +3801,6 @@
               <div class="tr-card">
                 <p class="tr-rotulo">Etapa 5</p>
                 <p class="tr-titulo">Gestão contínua</p>
-                <p class="tr-desc">Como manter a conformidade no dia a dia, além dos documentos.</p>
                 <p class="tr-entrega"><span class="tr-entrega-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Você sai com:</b> Uma rotina de conformidade</span></p>
               </div>
             </li>
@@ -4013,7 +3809,6 @@
               <div class="tr-card">
                 <p class="tr-rotulo">Bônus</p>
                 <p class="tr-titulo">Preparação para fiscalizações</p>
-                <p class="tr-desc">O que apresentar, como se posicionar e como evitar autuações desnecessárias.</p>
                 <p class="tr-entrega"><span class="tr-entrega-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Você sai com:</b> Segurança na hora da fiscalização</span></p>
               </div>
             </li>
@@ -4073,17 +3868,58 @@
           </div>
         </div>
       </section>
-      <section class="dp-sec bg-white py-16 sm:py-24">
+      <section class="ganho-sec bg-white py-16 sm:py-24">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="ganho-painel">
+            <h3 class="ganho-chamada">Quem sabe aplicar a <span class="nr">NR-01</span> ganha dinheiro com isso</h3>
+            <p class="ganho-sub">Seja qual for o seu lado da mesa:</p>
+            <div class="ganho-grid">
+              <div class="ganho-card">
+                <span class="ganho-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
+                <p class="ganho-perfil">Dono(a) de empresa</p>
+                <p class="ganho-titulo">Dinheiro que fica no caixa</p>
+                <ul class="ganho-lista">
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Evita multa da fiscalização</span></li>
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Evita processo trabalhista</span></li>
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Sabe exatamente onde a empresa está exposta</span></li>
+                </ul>
+              </div>
+              <div class="ganho-card">
+                <span class="ganho-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span>
+                <p class="ganho-perfil">Consultor(a) de SST</p>
+                <p class="ganho-titulo">Um serviço novo pra vender</p>
+                <ul class="ganho-lista">
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>A maioria das empresas ainda não sabe por onde começar</span></li>
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Você chega com o <strong>método pronto</strong> e vende a adequação como serviço</span></li>
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Repete o mesmo processo em quantos clientes quiser</span></li>
+                </ul>
+              </div>
+              <div class="ganho-card">
+                <span class="ganho-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span>
+                <p class="ganho-perfil">RH e administrativo</p>
+                <p class="ganho-titulo">Seu trabalho passa a ser visto</p>
+                <ul class="ganho-lista">
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Você vira a pessoa que resolve a <span class="nr">NR-01</span> na empresa</span></li>
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Protege a empresa de multa e de processo</span></li>
+                  <li><span class="ganho-check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>E <strong>a diretoria lembra</strong> de quem fez isso</span></li>
+                </ul>
+              </div>
+            </div>
+            <p class="ganho-fecho">
+              A norma já está valendo. <strong>Cada mês sem adequação é mais um mês com a empresa exposta.</strong>
+            </p>
+            <a href="#oferta" class="ganho-botao"
+              ><span class="ganho-botao-texto">Quero o Método <span class="nr">Conduza<span class="ganho-seta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span></span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="dp-sec bg-slate-50 py-16 sm:py-24">
         <!--
           ============================================================
           EXEMPLO FICTÍCIO: depoimentos, nomes e números desta seção
           são de exemplo, só para visualizar o layout.
           TROCAR POR DEPOIMENTOS E DADOS REAIS ANTES DE PUBLICAR.
-          FOTOS (aparecem sozinhas quando o arquivo existir, de preferência quadradas):
-            images/depoimentos/foto1.png = Camila Rodrigues
-            images/depoimentos/foto2.png = Marcos Teixeira
-            images/depoimentos/foto3.png = Juliana Martins
-            images/depoimentos/foto4.png = Rafael Souza
           ============================================================
         -->
         <div class="mx-auto max-w-5xl px-6">
@@ -4097,38 +3933,29 @@
           <div class="dp-layout" data-exemplo-ficticio>
             <figure class="dp-destaque">
               <span class="dp-aspas" aria-hidden="true">“</span>
-              <span class="dp-icone dp-icone-grande"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span>
-              <p class="dp-perfil">Consultora de SST</p>
-              <p class="dp-destaque-resultado">3 contratos fechados no primeiro mês.</p>
-              <blockquote class="dp-destaque-fala">“Eu travava no psicossocial. Hoje uso os mesmos modelos em todo cliente.”</blockquote>
-              <figcaption class="dp-nome">
-                    <span class="dp-foto"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><img src="images/depoimentos/foto1.png" alt="Camila Rodrigues" onerror="this.remove()" /></span>
-                    <span><b>Camila Rodrigues</b>Belo Horizonte, MG</span>
-                  </figcaption>
+              <span class="dp-icone dp-icone-grande"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
+              <p class="dp-perfil">Dono de empresa</p>
+              <p class="dp-destaque-resultado">Hoje eu sei exatamente onde minha empresa está.</p>
+              <blockquote class="dp-destaque-fala">“Eu nem sabia que a <span class="nr">NR-01</span> tinha mudado. Em poucas semanas, eu e o meu RH mapeamos os riscos e montamos o plano de ação.”</blockquote>
+              <figcaption class="dp-nome"><span><b>Marcos Teixeira</b>Transportadora · Uberlândia, MG</span></figcaption>
             </figure>
             <div class="dp-lista">
-              <figure class="dp-item dp-dono">
-                <span class="dp-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
-                <div>
-                  <p class="dp-perfil">Dono de empresa</p>
-                  <p class="dp-resultado">Fiscalização sem susto.</p>
-                  <blockquote class="dp-fala">“O auditor chegou, eu abri a pasta e estava tudo lá.”</blockquote>
-                  <figcaption class="dp-nome">
-                    <span class="dp-foto"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><img src="images/depoimentos/foto2.png" alt="Marcos Teixeira" onerror="this.remove()" /></span>
-                    <span><b>Marcos Teixeira</b>Uberlândia, MG</span>
-                  </figcaption>
-                </div>
-              </figure>
               <figure class="dp-item dp-rh">
                 <span class="dp-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
                 <div>
                   <p class="dp-perfil">RH</p>
                   <p class="dp-resultado">Plano pronto em 6 semanas.</p>
                   <blockquote class="dp-fala">“Tive que resolver a <span class="nr">NR-01</span> sozinha. O método me deu a ordem certa.”</blockquote>
-                  <figcaption class="dp-nome">
-                    <span class="dp-foto"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><img src="images/depoimentos/foto3.png" alt="Juliana Martins" onerror="this.remove()" /></span>
-                    <span><b>Juliana Martins</b>Contagem, MG</span>
-                  </figcaption>
+                  <figcaption class="dp-nome"><span><b>Juliana Martins</b>Contagem, MG</span></figcaption>
+                </div>
+              </figure>
+              <figure class="dp-item dp-consultor">
+                <span class="dp-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span>
+                <div>
+                  <p class="dp-perfil">Consultora de SST</p>
+                  <p class="dp-resultado">Virou um serviço novo.</p>
+                  <blockquote class="dp-fala">“Uso os mesmos modelos em todo cliente.”</blockquote>
+                  <figcaption class="dp-nome"><span><b>Camila Rodrigues</b>Belo Horizonte, MG</span></figcaption>
                 </div>
               </figure>
               <figure class="dp-item dp-tecnico">
@@ -4137,17 +3964,14 @@
                   <p class="dp-perfil">Técnico de Segurança</p>
                   <p class="dp-resultado">O psicossocial fez sentido.</p>
                   <blockquote class="dp-fala">“Explica na linguagem de quem está no chão de fábrica.”</blockquote>
-                  <figcaption class="dp-nome">
-                    <span class="dp-foto"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><img src="images/depoimentos/foto4.png" alt="Rafael Souza" onerror="this.remove()" /></span>
-                    <span><b>Rafael Souza</b>Betim, MG</span>
-                  </figcaption>
+                  <figcaption class="dp-nome"><span><b>Rafael Souza</b>Betim, MG</span></figcaption>
                 </div>
               </figure>
             </div>
           </div>
         </div>
       </section>
-      <section class="bn-sec bg-slate-50 py-16 sm:py-24">
+      <section class="bn-sec bg-white py-16 sm:py-24">
         <!-- Mockups dos bônus: nomes de arquivos, linhas e capítulos são ILUSTRATIVOS. Ajustar ao material real. -->
         <div class="mx-auto max-w-5xl px-6">
           <div class="bn-topo">
@@ -4161,7 +3985,6 @@
               <p class="bn-num"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Bônus 1</p>
               <h3 class="bn-titulo">AEP completa em planilha editável</h3>
               <p class="bn-desc">A Avaliação Ergonômica Preliminar com os riscos psicossociais já classificados. É só adaptar à sua empresa.</p>
-              <ul class="bn-itens"><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Nível de risco calculado automaticamente</li><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Resumo por nível de risco</li><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Plano de ação ligado à avaliação</li></ul>
               <p class="bn-valor"><s>R$ 397</s><b>Incluso hoje</b></p>
             </div>
             <div class="bn-mockup">
@@ -4202,7 +4025,6 @@
               <p class="bn-num"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Bônus 2</p>
               <h3 class="bn-titulo">Ferramentas ergonômicas de apoio</h3>
               <p class="bn-desc">Os recursos práticos pra aplicar a AEP no dia a dia, sem começar do zero.</p>
-              <ul class="bn-itens"><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Checklists pra usar em campo</li><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Questionário pronto pra equipe</li><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Tudo editável e pra download</li></ul>
               <p class="bn-valor"><s>R$ 147</s><b>Incluso hoje</b></p>
             </div>
             <div class="bn-mockup">
@@ -4242,7 +4064,6 @@
               <p class="bn-num"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Bônus 3</p>
               <h3 class="bn-titulo">Aula: AEP na prática</h3>
               <p class="bn-desc">Você assiste a Avaliação Ergonômica Preliminar sendo aplicada do início ao fim, com material extra incluso.</p>
-              <ul class="bn-itens"><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Aplicação real, passo a passo</li><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Dividida em capítulos</li><li><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Material de apoio em PDF</li></ul>
               <p class="bn-valor"><s>R$ 297</s><b>Incluso hoje</b></p>
             </div>
             <div class="bn-mockup">
@@ -4268,7 +4089,7 @@
         <div class="of-wrap">
           <div class="of-topo">
             <h2 class="of-titulo">Faz a soma <span>com a gente.</span></h2>
-            <p class="of-sub">Cada item que aparece entra na conta. No final, você vê quanto vale e quanto você paga.</p>
+            <p class="of-sub">Cada item entra na conta. No final, você vê quanto paga.</p>
           </div>
 
           <div class="sm-area" data-soma>
@@ -4455,39 +4276,27 @@
           <div class="fq-lista">
             <details class="fq-item" open>
               <summary><span class="fq-q">Para quem o Método Conduza serve?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">Para qualquer pessoa que precisa implementar a <span class="nr">NR-01</span> na prática: profissionais de RH, engenheiros e técnicos de segurança do trabalho, médicos e psicólogos, consultores de SST e donos de empresa que precisam estruturar a conformidade, mesmo sem experiência prévia no tema.</p>
+              <p class="fq-a">Para donos de empresa, RH, profissionais de SST e consultores que precisam colocar a <span class="nr">NR-01</span> em prática, mesmo sem experiência no tema.</p>
             </details>
             <details class="fq-item">
               <summary><span class="fq-q">Preciso ter conhecimento técnico em segurança do trabalho?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">Não. O método foi construído em linguagem clara e direta, com modelos prontos, justamente para ser aplicado por gestores, profissionais de RH e empresários sem formação técnica na área.</p>
+              <p class="fq-a">Não. A linguagem é direta e os modelos vêm prontos, pensados pra quem não é da área.</p>
             </details>
             <details class="fq-item">
-              <summary><span class="fq-q">Não tenho tempo pra mais um curso. Vale a pena?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">Vale. O conteúdo é direto e você aplica enquanto aprende, na rotina da empresa. Cada etapa termina com uma entrega pronta.</p>
-            </details>
-            <details class="fq-item">
-              <summary><span class="fq-q">Já tentei entender a <span class="nr">NR-01</span> sozinho e me perdi. O que muda agora?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">O método junta o que está espalhado num passo a passo único, na ordem certa, com modelos prontos pra preencher. Você sempre sabe qual é o próximo passo.</p>
+              <summary><span class="fq-q">Não tenho tempo e já tentei entender a <span class="nr">NR-01</span> sozinho. Vai ser diferente?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
+              <p class="fq-a">Vai. O método junta tudo num passo a passo na ordem certa, e você aplica enquanto aprende, na rotina da empresa.</p>
             </details>
             <details class="fq-item">
               <summary><span class="fq-q">Não é melhor contratar uma consultoria?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">Uma consultoria custa milhares de reais e, quando vai embora, leva o conhecimento junto. Com o método, você aprende a fazer e resolve com autonomia.</p>
+              <p class="fq-a">Uma consultoria custa milhares de reais e leva o conhecimento embora. Com o método, você resolve com autonomia.</p>
             </details>
             <details class="fq-item">
-              <summary><span class="fq-q">Como recebo o acesso ao conteúdo?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">Após a confirmação da compra, você recebe acesso imediato à plataforma com todo o conteúdo do Método Conduza: curso, templates, checklists e materiais de apoio.</p>
+              <summary><span class="fq-q">Como recebo o acesso?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
+              <p class="fq-a">Na hora, logo depois da compra, com o curso, os modelos e os bônus.</p>
             </details>
             <details class="fq-item">
-              <summary><span class="fq-q">Por quanto tempo tenho acesso?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">O acesso ao conteúdo e às atualizações do método é liberado conforme as condições apresentadas no momento da compra.</p>
-            </details>
-            <details class="fq-item">
-              <summary><span class="fq-q">E se eu não gostar do conteúdo?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">Você tem 7 dias de garantia incondicional. Se entender que o método não é para você, basta solicitar o reembolso, sem complicação.</p>
-            </details>
-            <details class="fq-item">
-              <summary><span class="fq-q">Posso parcelar o pagamento?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
-              <p class="fq-a">Sim, o pagamento pode ser parcelado no cartão de crédito conforme as opções disponíveis no checkout.</p>
+              <summary><span class="fq-q">E se eu não gostar?</span><span class="fq-icone"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span></summary>
+              <p class="fq-a">Você tem 7 dias de garantia incondicional. Pediu, recebe o dinheiro de volta.</p>
             </details>
           </div>
         </div>
@@ -4514,7 +4323,7 @@
     <script>
       // Barra de urgência: mostra sempre a data do dia em que a página é aberta
       var hoje = new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
-      document.getElementById("data-hoje").append("Desconto exclusivo somente hoje, ", hoje);
+      document.getElementById("data-hoje").append("Desconto aplicado hoje, ", hoje);
     </script>
     <script>
       // Simulação de fiscalização: uma pergunta por vez, medidor de exposição e diagnóstico no fim
