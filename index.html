@@ -3283,6 +3283,10 @@
         .hero-baixo { grid-area: sub; align-self: start; margin-top: 1.75rem; text-align: left; }
         .hero-baixo .hero-subtitulo { margin: 0; }
       }
+      /* hero sem subtítulo: o botão fica logo abaixo do título */
+      .hero-baixo .hero-cta { margin-top: 0; }
+      /* recortes das reportagens: logo do veículo + título, mesma proporção em todos os cards */
+      .news-shot { aspect-ratio: 2 / 1; border-bottom: 1px solid #e2e8f0; }
     </style>
     <title>Método Conduza de Adequação à NR-01 | Conduza Ocupacional</title>
     <meta
@@ -3369,10 +3373,6 @@
           </div>
 
             <div class="hero-baixo">
-            <p class="hero-subtitulo">
-              O <strong>Método Conduza</strong>, criado por um médico do trabalho com mais de 25 anos de experiência, mostra o
-              passo a passo pra adequar sua empresa, mesmo que você comece do zero.
-            </p>
             <a href="#oferta" class="ganho-botao hero-cta"
               ><span class="ganho-botao-texto">Quero proteger minha empresa<span class="ganho-seta"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span></a
             >
@@ -3396,7 +3396,7 @@
           </div>
           <div class="mt-12 grid gap-6 sm:grid-cols-2">
             <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <div class="relative h-40 w-full overflow-hidden bg-slate-100">
+              <div class="news-shot relative w-full overflow-hidden bg-white">
                 <img
                   alt="Reportagem do G1 sobre a nova NR-01"
                   loading="lazy"
@@ -3412,22 +3412,21 @@
                     bottom: 0;
                     color: transparent;
                   "
-                  src="images/news/g1.png"
+                  src="images/news/g1.jpg"
                 />
               </div>
               <div class="p-6">
                 <div class="flex items-center justify-between">
                   <span class="text-sm font-extrabold uppercase tracking-wide text-conduza-green">G1</span
-                  ><span class="text-xs font-medium text-slate-400">25/05/2026</span>
+                  ><span class="text-xs font-medium text-slate-400">27/05/2026</span>
                 </div>
                 <p class="mt-3 text-base font-bold leading-snug text-conduza-ink">
-                  <span class="nr">NR-1</span>: Regra que amplia fiscalização sobre saúde mental no trabalho entra em vigor nesta terça; veja o
-                  que muda
+                  <span class="nr">NR-1</span>: o que muda para o trabalhador com a nova regra sobre saúde mental? Entenda impactos
                 </p>
               </div>
             </div>
             <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <div class="relative h-40 w-full overflow-hidden bg-slate-100">
+              <div class="news-shot relative w-full overflow-hidden bg-white">
                 <img
                   alt="Reportagem do Contábeis sobre a nova NR-01"
                   loading="lazy"
@@ -3443,7 +3442,7 @@
                     bottom: 0;
                     color: transparent;
                   "
-                  src="images/news/contabeis.png"
+                  src="images/news/contabeis.jpg"
                 />
               </div>
               <div class="p-6">
@@ -3457,7 +3456,7 @@
               </div>
             </div>
             <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <div class="relative h-40 w-full overflow-hidden bg-slate-100">
+              <div class="news-shot relative w-full overflow-hidden bg-white">
                 <img
                   alt="Reportagem do TST · Justiça do Trabalho sobre a nova NR-01"
                   loading="lazy"
@@ -3473,7 +3472,7 @@
                     bottom: 0;
                     color: transparent;
                   "
-                  src="images/news/tst.png"
+                  src="images/news/tst.jpg"
                 />
               </div>
               <div class="p-6">
@@ -3488,7 +3487,7 @@
               </div>
             </div>
             <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <div class="relative h-40 w-full overflow-hidden bg-slate-100">
+              <div class="news-shot relative w-full overflow-hidden bg-white">
                 <img
                   alt="Reportagem do Forbes Brasil sobre a nova NR-01"
                   loading="lazy"
@@ -3504,7 +3503,7 @@
                     bottom: 0;
                     color: transparent;
                   "
-                  src="images/news/forbes.webp"
+                  src="images/news/forbes.jpg"
                 />
               </div>
               <div class="p-6">
