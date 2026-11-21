@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- VTurb: otimização de carregamento da VSL -->
+    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+    <link rel="preload" href="https://scripts.converteai.net/9944376a-ad16-4896-9956-d022b999880d/players/6b00df0de251005fde8026a1/v4/player.js" as="script" />
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script" />
+    <link rel="preload" href="https://cdn.converteai.net/9944376a-ad16-4896-9956-d022b999880d/6b00dee809f85aa6586ab3bc/main.m3u8" as="fetch" />
+    <link rel="dns-prefetch" href="https://cdn.converteai.net" />
+    <link rel="dns-prefetch" href="https://scripts.converteai.net" />
+    <link rel="dns-prefetch" href="https://images.converteai.net" />
+    <link rel="dns-prefetch" href="https://license.vturb.com" />
     <style>
       @font-face {
         font-family: Inter;
@@ -3246,21 +3255,9 @@
         box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 30px 60px -25px rgba(0, 0, 0, 0.75), 0 0 80px -25px rgba(110, 231, 183, 0.35);
       }
       /* o player da VTurb ocupa a largura toda do quadro */
-      .hero-vsl > vturb-smartplayer, .hero-vsl > div:not(.hero-vsl-aviso), .hero-vsl iframe, .hero-vsl video {
+      .hero-vsl > vturb-smartplayer, .hero-vsl > div, .hero-vsl iframe, .hero-vsl video {
         display: block !important; width: 100% !important; max-width: none !important; margin: 0 !important;
       }
-      /* aviso provisório até o código da VTurb entrar */
-      .hero-vsl-aviso {
-        aspect-ratio: 9 / 16; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
-        background: radial-gradient(ellipse at 50% 35%, rgba(20, 119, 106, 0.55), transparent 70%), #0b1f1b;
-      }
-      .hero-vsl:has(vturb-smartplayer, iframe, video) .hero-vsl-aviso { display: none; }
-      .hero-vsl-play {
-        display: flex; align-items: center; justify-content: center; width: 4.5rem; height: 4.5rem; border-radius: 999px;
-        background: rgba(255, 255, 255, 0.95); color: var(--conduza-green); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-      }
-      .hero-vsl-play svg { width: 28px; height: 28px; margin-left: 4px; }
-      .hero-vsl-aviso-txt { font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236, 253, 245, 0.7); }
       .hero-grid .hero-subtitulo { margin-top: 2rem; }
       @media (min-width: 64rem) {
         .hero-solo { max-width: 72rem; }
@@ -3359,17 +3356,9 @@
 
           <div class="hero-vsl-area">
             <div class="hero-vsl" id="vsl">
-              <!--
-                ==========================================================
-                VSL (VTURB): cole o código do player aqui dentro, no lugar
-                deste comentário. O aviso abaixo some sozinho quando o
-                player estiver aqui.
-                ==========================================================
-              -->
-              <div class="hero-vsl-aviso" aria-hidden="true">
-                <span class="hero-vsl-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>
-                <span class="hero-vsl-aviso-txt">Vídeo de apresentação</span>
-              </div>
+              <!-- VSL (VTurb) -->
+              <vturb-smartplayer id="vid-6b00df0de251005fde8026a1" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+              <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/9944376a-ad16-4896-9956-d022b999880d/players/6b00df0de251005fde8026a1/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
             </div>
           </div>
 
